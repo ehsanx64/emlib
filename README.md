@@ -1,2 +1,2 @@
-# emlib
+# libphp
 General Purpose PHP Library
