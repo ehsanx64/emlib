@@ -1,7 +1,7 @@
 <?php
 
 
-namespace ehsanx64;
+namespace ehsanx64\libphp;
 
 
 class TestClass {
