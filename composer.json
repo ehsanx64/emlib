@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ehsanx64\\libphp\\": "src/libphp"
+            "ehsanx64\\libphp\\": ""
         }
     }
 }
