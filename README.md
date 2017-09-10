@@ -16,3 +16,10 @@ Routines for conversion of Jalali dates to Gregorian and vise versa.
     * Bi-directional Arabic/Latin numeral conversion
     * Formatting routines for following entities:
         * prices.
+
+### Validation:
+Routines for validation of various entities:
+* url
+* email
+* number
+* date (Gregorian and Jalali)
