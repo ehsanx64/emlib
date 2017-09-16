@@ -3,6 +3,21 @@ namespace ehsanx64\libphp\Persian;
 
 include __DIR__ . '/jdf-2.70.php';
 
-class Numral {
+class Numeral {
+	/**
+	 * @param $latinNumeral
+	 * @param string $to
+	 * @param string $dotReplacement
+	 *
+	 * Convert between Persian\Latin numerals. Stolen from jdf :-D
+	 * @return mixed
+	 */
+	public static function latinToPersian($numeral, $to = 'en', $dotReplacement = '،') {
+		$num_a = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.');
+		$key_a = array('۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹', $dotReplacement);
 
+		return ($to == 'fa')
+			? str_replace($num_a, $key_a, $numeral)
+			: str_replace($key_a, $num_a, $numeral);
+	}
 }
