@@ -7,7 +7,9 @@ include __DIR__ . '/jdf-2.70.php';
 
 //  Date class
 class Date {
-	public static function getTime() {
-		echo Jdate::jdate('j F Y', time());
+	public static $standardDateFormat = 'j F Y';
+
+	public static function getStandardDate($timestamp) {
+		echo Jdate::jdate(self::$standardDateFormat, $timestamp);
 	}
 }
