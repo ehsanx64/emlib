@@ -7,7 +7,7 @@ class Numeral {
 	/**
 	 * @param $latinNumeral Number string to convert
 	 * @param string $to Language code to convert numeral to (en or fa)
-	 * @param string $dotReplacement Should function convert thousand separator too
+	 * @param string $dotReplacement Character which specifies decimal point 
 	 *
 	 * Convert between Persian\Latin numerals. Stolen from jdf :-D
 	 * @return mixed
