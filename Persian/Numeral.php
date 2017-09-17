@@ -7,7 +7,7 @@ class Numeral {
 	/**
 	 * @param $latinNumeral Number string to convert
 	 * @param string $to Language code to convert numeral to (en or fa)
-	 * @param string $dotReplacement Character which specifies decimal point 
+	 * @param string $dotReplacement Character which specifies decimal point
 	 *
 	 * Convert between Persian\Latin numerals. Stolen from jdf :-D
 	 * @return mixed
@@ -19,5 +19,14 @@ class Numeral {
 		return ($to == 'fa')
 			? str_replace($num_a, $key_a, $numeral)
 			: str_replace($key_a, $num_a, $numeral);
+	}
+
+	/**
+	 * Convert latin numeral to persian numeral
+	 * @param $number Number to convert
+	 * @return mixed Converted numeral
+	 */
+	public static function latinToPersian($number) {
+		return self::convertNumeral($number, 'fa');
 	}
 }
