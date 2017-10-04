@@ -29,4 +29,13 @@ class Numeral {
 	public static function latinToPersian($string) {
 		return self::convertNumeral($string, 'fa');
 	}
+	
+	/**
+	 * Convert Persian numerals in given string to Latin numerals
+	 * @param $string String to convert
+	 * @return mixed Converted numeral
+	 */
+	public static function PersianToLatin($string) {
+		return self::convertNumeral($string, 'en');
+	}
 }
