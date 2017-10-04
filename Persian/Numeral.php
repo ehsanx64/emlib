@@ -22,11 +22,11 @@ class Numeral {
 	}
 
 	/**
-	 * Convert latin numeral to persian numeral
-	 * @param $number Number to convert
+	 * Convert latin numerals in given string to persian numerals
+	 * @param $string String to convert
 	 * @return mixed Converted numeral
 	 */
-	public static function latinToPersian($number) {
-		return self::convertNumeral($number, 'fa');
+	public static function latinToPersian($string) {
+		return self::convertNumeral($string, 'fa');
 	}
 }
