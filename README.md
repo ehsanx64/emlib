@@ -23,3 +23,6 @@ Routines for validation of various entities:
 * email
 * number
 * date (Gregorian and Jalali)
+
+### Translation:
+Routines for translation. This functionality includes methods for translation and also actual translations so it can be used within WordPress, a framework powered web application.
