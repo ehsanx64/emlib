@@ -30,4 +30,15 @@ class Date {
     public static function sqlDatetimeToTimestamp($sqlDatetimeString) {
         return self::ToTimestamp($sqlDatetimeString);
     }
+	
+	/**
+	 * Check if the given string parameter is a valid date representation
+	 *
+	 * @param $datestring string|mixed The date string to validate
+	 * @return boolean True if the string is a valid date string false otherwise.
+	 */
+	public static function isDateString($datestring) {
+		$d = DateTime::createFromFormat('Y-m-d', $date);
+    	return $d && $d->format('Y-m-d') === $date;
+	}
 }
