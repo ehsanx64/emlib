@@ -5,9 +5,8 @@ include __DIR__ . '/jdf-2.70.php';
 
 //  Date class
 class Date {
-	public static $standardDateFormat = 'j F Y';
-	public static $shortDateFormat = 'Y-m-d';
-
+	public static $dateFormat = 'j F Y';
+	public static $timeFormat = 'H:i';
 	
 	/*
 	 * Get current Jalali date based on the class standard format
@@ -17,7 +16,7 @@ class Date {
 	 * @return string Date string
 	 */
 	public static function getStandardDate($timestamp = time()) {
-		echo Jdate::jdate(self::$standardDateFormat, $timestamp);
+		echo Jdate::jdate(self::$dateFormat, $timestamp);
 	}
 
 	
@@ -27,7 +26,7 @@ class Date {
 	 * @param $gregorianDateString mixed The Gregorian date for conversion
 	 * @return string Jalali date
 	 */
-	public static function ToJalali($gregorianDateString) {
-		return Jdate::jdate(self::$shortDateFormat, \ehsanx64\libphp\General\Date\Date::toTimestamp($gregorianDateString));
+	public static function ToJalaliDate($gregorianDateString) {
+		return Jdate::jdate(self::$dateFormat, \ehsanx64\libphp\General\Date\Date::toTimestamp($gregorianDateString));
 	}
 }
