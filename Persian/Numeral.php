@@ -1,15 +1,14 @@
 <?php
 namespace ehsanx64\libphp\Persian;
 
-include __DIR__ . '/jdf-2.70.php';
-
 class Numeral {
 	/**
+	 * Convert between Persian\Latin numerals. Stolen from jdf :-D
+	 *
 	 * @param $latinNumeral Number string to convert
 	 * @param string $to Language code to convert numeral to (en or fa)
 	 * @param string $dotReplacement Character which specifies decimal point
 	 *
-	 * Convert between Persian\Latin numerals. Stolen from jdf :-D
 	 * @return mixed
 	 */
 	public static function convertNumeral($numeral, $to = 'en', $dotReplacement = '،') {
@@ -23,6 +22,7 @@ class Numeral {
 
 	/**
 	 * Convert latin numerals in given string to persian numerals
+	 *
 	 * @param $string String to convert
 	 * @return mixed Converted numeral
 	 */
@@ -32,6 +32,7 @@ class Numeral {
 	
 	/**
 	 * Convert Persian numerals in given string to Latin numerals
+	 *
 	 * @param $string String to convert
 	 * @return mixed Converted numeral
 	 */
