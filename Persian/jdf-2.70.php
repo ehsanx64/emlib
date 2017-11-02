@@ -484,7 +484,7 @@ class Jdate {
 					if ($jm === '') {
 						return mktime($h, $m, $s);
 					} else {
-						$jdate = explode('_', jdate('Y_j', '', '', $timezone, 'en'));
+						$jdate = explode('_', self::jdate('Y_j', '', '', $timezone, 'en'));
 						if ($jd === '') {
 							list($gy, $gm, $gd) = self::jalali_to_gregorian($jdate[0], $jm, $jdate[1]);
 

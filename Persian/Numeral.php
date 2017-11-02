@@ -26,7 +26,7 @@ class Numeral {
 	 * @param $string String to convert
 	 * @return mixed Converted numeral
 	 */
-	public static function latinToPersian($string) {
+	public static function toPersian($string) {
 		return self::convertNumeral($string, 'fa');
 	}
 	
@@ -36,7 +36,7 @@ class Numeral {
 	 * @param $string String to convert
 	 * @return mixed Converted numeral
 	 */
-	public static function PersianToLatin($string) {
+	public static function toLatin($string) {
 		return self::convertNumeral($string, 'en');
 	}
 }

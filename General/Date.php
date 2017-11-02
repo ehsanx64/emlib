@@ -1,6 +1,8 @@
 <?php
 namespace ehsanx64\libphp\General;
 
+use DateTime;
+
 class Date {
     /**
 	 * Convert Gregorian standard date (1985-12-01) to unix timestamp
@@ -8,7 +10,7 @@ class Date {
 	 * @param $gregorianDate Date string in format (1985-12-01)
 	 * @return int Unix timestamp casted as an integer
 	 */
-	public static function ToTimestamp($gregorianDate) {
+	public static function toTimestamp($gregorianDate) {
 		// Following lines commented in favor of PHP's strtotime
 		/*
 		$p = explode('-', $gregorianDate);
@@ -28,7 +30,7 @@ class Date {
 	 * @return integer Unix timestamp
 	 */
     public static function sqlDatetimeToTimestamp($sqlDatetimeString) {
-        return self::ToTimestamp($sqlDatetimeString);
+        return self::toTimestamp($sqlDatetimeString);
     }
 	
 	/**
@@ -38,7 +40,27 @@ class Date {
 	 * @return boolean True if the string is a valid date string false otherwise.
 	 */
 	public static function isDateString($datestring) {
-		$d = DateTime::createFromFormat('Y-m-d', $date);
-    	return $d && $d->format('Y-m-d') === $date;
+		$d = DateTime::createFromFormat('Y-m-d', $datestring);
+    	return $d && $d->format('Y-m-d') === $datestring;
+	}
+
+	/**
+	 * Guess date delimiter character in a given date string
+	 *
+	 * @param $datestring string The date string to search for delimiter
+	 * @return bool|string character The delimiter, or false if there is none
+	 */
+	public static function guessDateDelimiter($datestring) {
+		$delimiter = '-';
+		if (count(explode($delimiter, $datestring)) == 3) {
+			return $delimiter;
+		}
+
+		$delimiter = '/';
+		if (count(explode($delimiter, $datestring)) == 3) {
+			return $delimiter;
+		}
+
+		return false;
 	}
 }
