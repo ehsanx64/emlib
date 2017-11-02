@@ -5,10 +5,10 @@ use DateTime;
 
 class Date {
     /**
-	 * Convert Gregorian standard date (1985-12-01) to unix timestamp
+	 * Convert Gregorian date string to unix timestamp
 	 *
-	 * @param $gregorianDate Date string in format (1985-12-01)
-	 * @return int Unix timestamp casted as an integer
+	 * @param string $gregorianDate Date string in format (1985-12-01)
+	 * @return int Unix timestamp
 	 */
 	public static function toTimestamp($gregorianDate) {
 		// Following lines commented in favor of PHP's strtotime
@@ -19,25 +19,26 @@ class Date {
 			return (int) mktime(null, null, null, $p[1], $p[2], $p[0]);
 		}
 		*/
-
-		return strtotime($gregorianDate);
+		return (int) strtotime($gregorianDate);
 	}
-    
+
+
     /**
-     * Convert SQL DATETIME string (2017-04-23 11:59:10 etc) to Unix timestamp
+     * Convert SQL DATETIME string to Unix timestamp
 	 *
-	 * @param $sqlDatetimeString mixed The SQL DATETIME
+	 * @param string $sqlDatetimeString The SQL DATETIME. Something like: 2017-04-23 11:59:10 etc
 	 * @return integer Unix timestamp
 	 */
     public static function sqlDatetimeToTimestamp($sqlDatetimeString) {
         return self::toTimestamp($sqlDatetimeString);
     }
-	
+
+
 	/**
 	 * Check if the given string parameter is a valid date representation
 	 *
-	 * @param $datestring string|mixed The date string to validate
-	 * @return boolean True if the string is a valid date string false otherwise.
+	 * @param string $datestring The date string to validate
+	 * @return bool True if the string is a valid date string false otherwise.
 	 */
 	public static function isDateString($datestring) {
 		$d = DateTime::createFromFormat('Y-m-d', $datestring);
@@ -47,8 +48,8 @@ class Date {
 	/**
 	 * Guess date delimiter character in a given date string
 	 *
-	 * @param $datestring string The date string to search for delimiter
-	 * @return bool|string character The delimiter, or false if there is none
+	 * @param string $datestring The date string to search for delimiter
+	 * @return bool|string The delimiter character, or false if there is none
 	 */
 	public static function guessDateDelimiter($datestring) {
 		$delimiter = '-';

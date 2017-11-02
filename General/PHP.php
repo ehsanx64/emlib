@@ -1,6 +1,12 @@
 <?php
 namespace ehsanx64\libphp\General;
 
+/**
+ * Class PHP
+ *
+ * This class contains general PHP utilities.
+ * @package ehsanx64\libphp\General
+ */
 class PHP {
     /**
 	 * Enable displaying of all errors
