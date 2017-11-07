@@ -121,7 +121,7 @@ class Date {
 		$delimiter = General\Date::guessDateDelimiter($d);
 
 		// If no delimiter
-		if ($delimiter == false) {
+		if ($delimiter == false && !empty($dateString)) {
 			throw new Exception('Invalid dates supplied');
 		}
 
