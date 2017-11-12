@@ -42,7 +42,7 @@ class Date {
 			$f = self::$dateFormat;
 		}
 
-		return Jdate::jdate($f, $ts);
+		return Jdate::jdate($f, $ts, '', 'UTC');
 	}
 
 
