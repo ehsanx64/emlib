@@ -1,4 +1,4 @@
-# libphp
+# phplib
 General Purpose PHP Library
 
 ## TODO

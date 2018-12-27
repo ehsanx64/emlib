@@ -1,5 +1,5 @@
 <?php
-namespace ehsanx64\libphp\Persian;
+namespace ehsanx64\phplib\Persian;
 
 class Numeral {
 	/**

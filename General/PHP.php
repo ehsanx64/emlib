@@ -1,11 +1,11 @@
 <?php
-namespace ehsanx64\libphp\General;
+namespace ehsanx64\phplib\General;
 
 /**
  * Class PHP
  *
  * This class contains general PHP utilities.
- * @package ehsanx64\libphp\General
+ * @package ehsanx64\phplib\General
  */
 class PHP {
     /**

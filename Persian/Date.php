@@ -1,8 +1,8 @@
 <?php
-namespace ehsanx64\libphp\Persian;
+namespace ehsanx64\phplib\Persian;
 
-use \ehsanx64\libphp\General;
-use \ehsanx64\libphp\Persian;
+use \ehsanx64\phplib\General;
+use \ehsanx64\phplib\Persian;
 use Exception;
 
 include __DIR__ . '/jdf-2.70.php';
@@ -105,7 +105,7 @@ class Date {
 		if (count($dateparts) != 3) {
 			throw new Exception('Invalid date');
 		}
-		$gtimestamp = \ehsanx64\libphp\Persian\Jdate::jmktime(0, 0, 0, $dateparts[1], $dateparts[2], $dateparts[0]);
+		$gtimestamp = \ehsanx64\phplib\Persian\Jdate::jmktime(0, 0, 0, $dateparts[1], $dateparts[2], $dateparts[0]);
 		return intval($gtimestamp);
 	}
 
