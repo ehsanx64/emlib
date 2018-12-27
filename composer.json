@@ -4,7 +4,7 @@
     "description": "General Purpose PHP Library",
     "keywords": ["general","utility"],
     "homepage": "https://github.com/ehsanx64/phplib",
-    "license": "GPL 3.0",
+    "license": "MIT",
     "authors": [
         {
             "name": "Ehsan Mohammadi",
