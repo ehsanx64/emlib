@@ -1,9 +1,9 @@
 {
-    "name": "ehsanx64/libphp",
+    "name": "ehsanx64/phplib",
     "type": "library",
     "description": "General Purpose PHP Library",
     "keywords": ["general","utility"],
-    "homepage": "https://github.com/ehsanx64/libphp",
+    "homepage": "https://github.com/ehsanx64/phplib",
     "license": "GPL 3.0",
     "authors": [
         {
@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ehsanx64\\libphp\\": ""
+            "ehsanx64\\phplib\\": ""
         }
     }
 }
