@@ -6,6 +6,7 @@ class Module {
 	private $modules = [];
 
 	public function __construct($modulesDir = '') {
+
 		// If moduleDir is given using constructor we'll automate some tasks
 		if (!empty($modulesDir)) {
 			$this->setModulesDir($modulesDir);
@@ -17,6 +18,7 @@ class Module {
 	 * @param $path Absolute path to directory holding the modules
 	 */
 	public function setModulesDir($path) {
+		$this->registerAutoloader($path);
 		$this->_moduleDirPath = $path;
 	}
 
@@ -36,7 +38,7 @@ class Module {
 		}
 	}
 
-	public function loadModule($name, $path, $autoload = false) {
+	public function loadModule($name, $path) {
 		$this->modules[$name] = [
 			'path' => $path
 		];
@@ -44,9 +46,6 @@ class Module {
 		$module = sprintf("%s%sindex.php", $path, DIRECTORY_SEPARATOR);
 
 		if (file_exists($module) && is_readable($module)) {
-			if ($autoload) {
-				$this->registerAutoloader($path);
-			}
 			require $module;
 		}
 	}
@@ -71,12 +70,6 @@ class Module {
 			if (file_exists($parentDir . '/' . $className . '.php')) {
 				require $parentDir . '/' . $className . '.php';
 			}
-
-			// This piece added to use autoloading for empress
-			if (file_exists(dirname($parentDir) . '/' . $className . '.php')) {
-				require dirname($parentDir) . '/' . $className . '.php';
-			}
 		});
-
 	}
 }
