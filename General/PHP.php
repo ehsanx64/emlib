@@ -2,10 +2,7 @@
 namespace ehsanx64\phplib\General;
 
 /**
- * Class PHP
- *
  * This class contains general PHP utilities.
- * @package ehsanx64\phplib\General
  */
 class PHP {
     /**
