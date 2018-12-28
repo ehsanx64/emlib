@@ -32,18 +32,51 @@ class Module {
 		$modules = $fs->getDirectories($this->_moduleDirPath);
 
 		foreach ($modules as $module) {
-			$this->loadModule($fs->getLastPart($module), $module);
+			$this->loadModule($fs->getLastPart($module), $module, true);
 		}
 	}
 
-	public function loadModule($name, $path) {
+	public function loadModule($name, $path, $autoload = false) {
 		$this->modules[$name] = [
 			'path' => $path
 		];
 
 		$module = sprintf("%s%sindex.php", $path, DIRECTORY_SEPARATOR);
+
 		if (file_exists($module) && is_readable($module)) {
+			if ($autoload) {
+				$this->registerAutoloader($path);
+			}
 			require $module;
 		}
+	}
+
+	public function registerAutoloader($path) {
+		spl_autoload_register(function($class) use ($path) {
+			// Use current directory as root to start referencing
+			$parentDir = $path;
+
+			// Convert namespace path to file system path
+			$className = str_replace("\\", '/', $class);
+
+			if (!is_array($className)) {
+				if (empty($class)) {
+					return false;
+				}
+			} else {
+				$className = array_pop($className);
+			}
+
+			// If file path exists include it
+			if (file_exists($parentDir . '/' . $className . '.php')) {
+				require $parentDir . '/' . $className . '.php';
+			}
+
+			// This piece added to use autoloading for empress
+			if (file_exists(dirname($parentDir) . '/' . $className . '.php')) {
+				require dirname($parentDir) . '/' . $className . '.php';
+			}
+		});
+
 	}
 }
