@@ -1,6 +1,8 @@
 <?php
 namespace ehsanx64\phplib;
 
+use ehsanx64\phplib\Persian\Numeral;
+
 /*
  * Simple Translation System
  */
@@ -112,7 +114,26 @@ class Translate {
 	 */
 	public function tr() {
 		$params = func_get_args();
+		$params[0] = $this->t($params[0]);
 		$res = call_user_func_array('sprintf', $params);
+		return $res;
+	}
+
+	/**
+	 * This method is exactly like the tr() but tries to convert numerals to Persian after translation
+	 * if locale is set to Persian.
+	 *
+	 * @return string The translated string with persianized numerals
+	 */
+	public function trn() {
+		$params = func_get_args();
+		$params[0] = $this->t($params[0]);
+		$res = call_user_func_array('sprintf', $params);
+
+		if ($this->getLocale() == 'fa') {
+			return Numeral::toPersian($res);
+		}
+
 		return $res;
 	}
 }
