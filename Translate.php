@@ -11,9 +11,14 @@ class Translate {
 	private $translateDirPath;
 
 	/**
-	 * @var array $modules Array containing loaded modules details (name, path etc)
+	 * @var array $translations Array containing loaded translation details (name, path etc)
 	 */
-	private $modules = [];
+	private $translations = [];
+
+	/**
+	 * @var string $locale Contains current active locale name (en, fa, en_us, de, per etc)
+	 */
+	private $locale;
 
 	/**
 	 * Constructor. It will automate some tasks if argument provided.
@@ -26,16 +31,52 @@ class Translate {
 		if (!empty($translateDir)) {
 			$this->translateDirPath = $translateDir;
 		}
+
+		// Try to find out the current locale
+		$this->handleLocaleSelection();
 	}
 
+	/**
+	 * Checks for various global variables or constants to figure out current locale. For example
+	 * it will check if any like-wordpress functions and constants and set the locale accordingly.
+	 * If everything fail it will set the locale to en
+	 */
+	public function handleLocaleSelection() {
+		// Set locale to en if other methods failed
+		$this->setLocale('en');
+	}
+
+	/**
+	 * Set active locale for translations
+	 *
+	 * @param string $localeName The locale name to set as active (en or de etc)
+	 */
+	public function setLocale($localeName) {
+		$this->locale = $localeName;
+	}
+
+	/**
+	 * Get currently active locale
+	 *
+	 * @return string Get active locale
+	 */
 	public function getLocale() {
-		return 'fa';
-		return 'en';
+		return $this->locale;
 	}
 
+	/**
+	 * Translate a string.
+	 *
+	 * @param $key string The array key used in translation
+	 * @return string The translation result
+	 */
 	public function t($key) {
 		$targetFile = $this->translateDirPath . '/' . $this->getLocale() . '.php';
 		if (file_exists($targetFile)) {
+			$this->translations[] = [
+				'locale' => $this->getLocale(),
+				'path' => $targetFile
+			];
 			$values = include $targetFile;
 		}
 
