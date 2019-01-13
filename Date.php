@@ -1,5 +1,5 @@
 <?php
-namespace ehsanx64\phplib\General;
+namespace ehsanx64\phplib;
 
 use DateTime;
 

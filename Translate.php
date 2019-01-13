@@ -104,4 +104,15 @@ class Translate {
 
 		return $key;
 	}
+
+	/**
+	 * Translate string and feed it to sprintf afterwards
+	 * @return string The translation result
+	 *
+	 */
+	public function tr() {
+		$params = func_get_args();
+		$res = call_user_func_array('sprintf', $params);
+		return $res;
+	}
 }

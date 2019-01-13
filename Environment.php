@@ -36,9 +36,9 @@ class Environment {
 	 * @throws \Exception Feeding this method with an invalid environment name throws an exception.
 	 */
 	public function is($phpenv) {
-		// Detect current enviroment
+		// Detect current environment
 		$this->detect();
-		
+
 		if (isset($this->envs[$phpenv])) {
 			return $this->envs[$phpenv];
 		}

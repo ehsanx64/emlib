@@ -1,8 +1,7 @@
 <?php
 namespace ehsanx64\phplib\Persian;
 
-use \ehsanx64\phplib\General;
-use \ehsanx64\phplib\Persian;
+use \ehsanx64\phplib;
 use Exception;
 
 include __DIR__ . '/jdf-2.70.php';
