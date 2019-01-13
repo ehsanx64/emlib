@@ -42,6 +42,24 @@ class Translate {
 	 * If everything fail it will set the locale to en
 	 */
 	public function handleLocaleSelection() {
+		$e = new Environment();
+
+		if ($e->is('wordpress') && function_exists('get_locale')) {
+			switch (get_locale()) {
+			case 'en_US':
+				$this->setLocale('en');
+				break;
+			case 'fa_IR':
+				$this->setLocale('fa');
+				break;
+			default:
+				$this->setLocale('en');
+				break;
+			}
+
+			return;
+		}
+
 		// Set locale to en if other methods failed
 		$this->setLocale('en');
 	}
