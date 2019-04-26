@@ -54,7 +54,7 @@ class Date {
 	 */
 	public static function toJalaliDate($gregorianDateString, $format = '') {
 		// Generate the timestamp
-		$t = General\Date::toTimestamp($gregorianDateString);
+		$t = \ehsanx64\phplib\Date::toTimestamp($gregorianDateString);
 
 		return self::getDate($t, $format);
 	}
